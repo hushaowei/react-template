@@ -7,7 +7,18 @@ export default {
   },
   devServer: {
     port: 8090, // 端口
-    open: true, // 运行时打开
+    open: true // 运行时打开
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js)/,
+        exclude: /node_modules/, // 除了这个文件夹外
+        use: [
+          'babel-loader'
+        ]
+      }
+    ]
   },
   mode: 'development'
 }
