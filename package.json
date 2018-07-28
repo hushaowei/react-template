@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/hushaowei/react-template/issues"
   },
-  "homepage": "https://github.com/hushaowei/react-template#readme"
+  "homepage": "https://github.com/hushaowei/react-template#readme",
+  "devDependencies": {
+    "webpack": "^4.16.3"
+  }
 }
