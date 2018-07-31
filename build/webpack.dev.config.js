@@ -4,6 +4,7 @@ var HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   mode: 'development',
+  devtool: 'eval-source-map', // 开发模式 用于浏览器调试 *打包生产环境时必须关闭
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, './'),
