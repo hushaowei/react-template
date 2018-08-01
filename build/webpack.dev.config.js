@@ -35,7 +35,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: '这是一个标题',
-      template: './public/index.html',
+      favicon:'public/favicon.ico',
+      template: 'public/index.html',
       inject: true // 将js文件放到body标签的结尾 true或者body
     }),
     new webpack.HotModuleReplacementPlugin()
