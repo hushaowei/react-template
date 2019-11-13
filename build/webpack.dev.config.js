@@ -1,17 +1,32 @@
-var path = require("path");
-var webpack = require("webpack");
-var HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path')
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const baseConfig = require('./webpack.base.config')
+
+const data = {
+  count: 10,
+  name: 'hushaowei'
+}
+
+const copy = (data) => {
+  return {...data}
+}
+
+const data1 = copy(data)
+
+console.log(data1)
+
 
 module.exports = {
+  ...baseConfig,
   mode: 'development',
   devtool: 'eval-source-map', // 开发模式 用于浏览器调试 *打包生产环境时必须关闭
-  entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, './'),
     filename: 'bundle.js'
   },
   devServer: {
-    port: 8888,
+    port: 8060,
     open: true, // 运行时打开
     inline: true, // 实时刷新
     hot: true, // 模块热更新，配置HotModuleReplacementPlugin
@@ -20,23 +35,6 @@ module.exports = {
       poll: 1000,
       ignored: /node_modules/
     }
-  },
-  module: {
-    rules: [
-      {
-        test: /\.(js)/,
-        exclude: /node_modules/,// 除了这个文件夹外
-        use: ['babel-loader']
-      },
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader']
-      },
-      {
-        test: /\.less$/,
-        use: ['style-loader', 'css-loader', 'less-loader']
-      }
-    ]
   },
   plugins: [
     new HtmlWebpackPlugin({

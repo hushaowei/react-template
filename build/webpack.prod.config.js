@@ -1,23 +1,23 @@
 var path = require("path");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 var cleanWebpackPlugin = require("clean-webpack-plugin");
+const baseConfig = require('./webpack.base.config')
 
 module.exports = {
+  ...baseConfig,
+  node: {
+    console: false,
+    global: false,
+    process: false,
+    Buffer: false,
+    __filename: false,
+    __dirname: false
+  },
   mode: 'production',
-  entry: './src/index.js',
   output: {
     // path是webpack打包后文件的储存路径 （必须是绝对路径）
     path: path.resolve(__dirname, '../dist'),
     filename: 'js/[id].[name].[chunkhash].js'
-  },
-  module: {
-    rules: [
-      {
-        test: /\.(js)/,
-        exclude: /node_modules/, // 除了这个文件夹外
-        use: ['babel-loader']
-      }
-    ]
   },
   plugins: [
     new cleanWebpackPlugin(['dist/*'], {
